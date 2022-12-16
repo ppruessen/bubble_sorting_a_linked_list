@@ -114,6 +114,19 @@ void bubble_sort(list** head, int count)
     }
 }
 
+/* Function to free the list */
+void free_list(list *head)
+{
+    list *temp;
+    
+    while (head != NULL)
+    {
+        temp = head->next;
+        free(head);
+        head = temp;
+    }
+}
+
 /* Program to create 100 random integers and store them in a single linked list */
 /* Printing them out before and after bubble sorting them */
 int main()
@@ -134,9 +147,6 @@ int main()
     printf("\n--------------- Sorted list: ---------------\n");
     bubble_sort(&head, count);
     print_list(head);
-    
-    
-    
-    free (head);
+    free_list(head);
     return 0;
 }
